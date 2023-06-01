@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <header>
+      <ion-icon
+        class="activator"
+        id="activator"
+        name="options-outline"
+      ></ion-icon>
+      <nav>
+        <ul>
+          <li>
+            <a href="/"> <ion-icon name="home-outline"></ion-icon></a>
+          </li>
+          <li>
+            <a href="/"><ion-icon name="server-outline"></ion-icon></a>
+          </li>
+          <li>
+            <a href="/"><ion-icon name="finger-print-outline"></ion-icon></a>
+          </li>
+          <li>
+            <a href="/"><ion-icon name="server-outline"></ion-icon></a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"
+      integrity="sha512-cOH8ndwGgPo+K7pTvMrqYbmI8u8k6Sho3js0gOqVWTmQMlLIi6TbqGWRTpf1ga8ci9H3iPsvDLr4X7xwhC/+DQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/CSSRulePlugin.min.js"
+      integrity="sha512-zaTjCyJwbhpd8V594wpmUStv6Dy/SnmP7jR+XXnE49z2ayHkSirlNiP4XQc15Zgk+p5gXGe5ZUQYu4yRtShqkQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <script>
+      var card = document.getElementById("activator");
+
+      var tl = gsap.timeline({ defaults: { ease: "power2.inOut" } });
+
+      var toggle = false;
+
+      tl.to(".activator", {
+        background: "#805ad5",
+        borderRadius: "5em 0 0 5em"
+      });
+      tl.to(
+        "nav",
+        {
+          clipPath: "ellipse(100%  100% at 50% 50%)"
+        },
+        "-=.5"
+      );
+      tl.to(
+        "nav li",
+        {
+          opacity: 1,
+          transform: "translateX(0)",
+          stagger: 0.05
+        },
+        "-=.5"
+      );
+      tl.pause();
+
+      card.addEventListener("click", () => {
+        toggle = !toggle;
+        if (toggle ? tl.play() : tl.reverse());
+      });
+    </script>
+  </body>
+</html>
